@@ -1,0 +1,16 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Notify Jira') {
+            steps {
+                // Opción A: Usando el nombre exacto de la transición
+                jiraTransitionIssue(
+                    idOrKey: 'SCRUM-1',
+                    site: 'jira',
+                    input: [transition: [id: '31']] // Usar el ID numérico es más seguro
+                )
+            }
+        }
+    }
+}
